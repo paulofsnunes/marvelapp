@@ -10,6 +10,7 @@
             type="text"
             class="search-input"
             placeholder="Buscar pelo nome"
+            @keyup.enter="searchCharacter()"
           />
           <button class="button-search" @click="searchCharacter()">
             Buscar
@@ -110,9 +111,7 @@
         return this.favorites.length;
       },
     },
-    /* async created() {
-      const characterData = await this.getCharacterData();
-    }, */
+ 
     methods: {
       setFavorites(name) {
         if (this.favorites.includes(name)) {
@@ -168,6 +167,7 @@
   }
 
   .characters-list {
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -208,6 +208,11 @@
     border: none;
   }
 
+    .button-card:hover {
+    letter-spacing: 0.5px;
+    background: linear-gradient(to right, #4776e6, #8e54e9);
+    }
+
   .button-search {
     margin-top: 2rem;
     padding: 0.4rem;
@@ -244,6 +249,11 @@
     border: none;
   }
 
+  .button-remove:hover {
+  letter-spacing: 0.5px;
+  background: linear-gradient(to right, #e66747, #e95454);
+  }
+
   .search-input__container {
     text-align: center;
   }
@@ -260,4 +270,62 @@
     padding-left: 15px;
     margin-right: 5px;
   }
+
+  
+  /* RESPONSIVO */
+
+  @media screen and (max-width: 900px) {
+    .characters {
+    display: flex;
+    justify-content: center;
+  }
+    .characters-list {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 015px;
+    grid-row-gap: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18em;
+  }
+    .characters-list-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    background: white;
+    box-shadow: 5px 5px 15px rgb(0 0 0 / 20%);
+    border-radius: 8px;
+    width: 300px;
+  }
+    .character-image {
+    width: 50%;
+    height: 50%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+    .characters span {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: "Marvel", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .search-input {
+    height: 40px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
+    width: 200px;
+    border: none;
+    font-family: "Marvel", sans-serif;
+    padding-left: 15px;
+    margin-right: 5px;
+  }
+  }
+
 </style>

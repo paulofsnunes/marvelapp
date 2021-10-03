@@ -20,9 +20,9 @@
       <div class="list-container">
         <summary-favorites
           class="favorites-list"
-          :characters-list="stateCharacterDataList"
           :favorites="stateFavoriteCharacterList"
           @addFavorite="addFavorite"
+          @deleteFavorite="deleteFavorite"
           @eraseFavoriteCharacterList="eraseFavoriteCharacterList"
         />
       </div>
@@ -72,7 +72,7 @@
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-  #app {
+  * {
     margin: 0;
     border: 0;
     padding: 0;
@@ -103,12 +103,12 @@
   }
 
   .animation-box {
-    width: 180px;
+    max-width: 300px;
   }
 
   .animation-image {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
     animation: go-back 1s infinite alternate;
   }
   @keyframes go-back {
@@ -121,7 +121,7 @@
   }
 
   .list-container {
-    width: 250px;
+    max-width: 300px;
     height: 500px;
     background: red;
     margin-top: 174px;
@@ -132,5 +132,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 300px;
+  }
+
+  
+  /* RESPONSIVO */
+
+  @media screen and (max-width: 900px) {
+    .animation-box {
+      display: none;
+    }
+    .home-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .list-container {
+    max-width: 300px;
+    height: 500px;
+    background: red;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+  }
   }
 </style>

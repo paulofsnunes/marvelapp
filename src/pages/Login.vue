@@ -94,6 +94,17 @@
 </script>
 
 <style lang="css" scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+  * {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Marvel', sans-serif;
+}
+
   .login-container {
     background: url(../assets/bgUatu.jpg);
     background-size: cover;
@@ -260,14 +271,20 @@
     padding: 0.4rem;
     border-radius: 4px;
     font-size: 0.85rem;
+    width: 100%;
     cursor: pointer;
     margin-top: 1rem;
   }
 
-  .footer .social-field a {
+  .footer .social-field a i {
+    margin: 0 0.5rem;
+    width: 15px;
+}
+
+.footer .social-field a {
     text-decoration: none;
     color: white;
-  }
+}
 
   .footer .social-field.twitter {
     background: linear-gradient(to right, #56a7f2, #468aca);

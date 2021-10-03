@@ -1,12 +1,13 @@
 <template>
   <div class="favorites-list">
     <h2>Sua Lista:</h2>
-    <p v-if="favoriteListLength < maximumList">
+
+    <p v-if="favoriteListLength < maximumList && !saved">
       Adicione até 3 personagens
     </p>
     <p
-      v-for="(characterName, index) in favorites"
-      :key="index"
+      v-for="characterName in favorites"
+      :key="characterName.id"
       class="chosen-character"
     >
       <img
@@ -22,6 +23,13 @@
     <p class="list-full" v-if="favoriteListLength == 3">
       Equipe completa!
     </p>
+     <p v-if="favoriteListLength == 3">
+      Você gostaria de
+      <button class="button-remove" @click="saveFavoriteCharacterList(favorites)">
+        Salvar
+      </button>
+      sua lista?
+    </p>
     <p class="list-full" v-if="favoriteListLength > 3">
       Sua lista está cheia!! <br />A equipe recebe 3 personagens no máximo!
     </p>
@@ -36,38 +44,49 @@
 </template>
 
 <script>
+import { mapActions, mapGetters} from "vuex";
+
 export default {
   name: "SummaryFavorites",
   props: {
     favorites: {
       type: Array,
-      required: true
+
     }
   },
   data() {
     return {
-      maximumList: 3
+      maximumList: 3,
     };
   },
   computed: {
-    favoriteListLength() {
-      return this.favorites.length;
-    }
-  },
+        ...mapGetters({
+      favoriteListLength: 'getFavoriteListLength'
+    })
+  }, 
   methods: {
     emptyFavoriteCharacterList() {
       this.$emit("eraseFavoriteCharacterList");
-    }
+    },
+    ...mapActions({
+      saveFavoriteCharacterList: 'saveFavoriteCharacterList'
+      })
   }
-};
+  }
 </script>
 
 <style scoped>
+h2 {
+  margin-top: 1rem;
+}
+
 .chosen-character {
+  margin-top: 1rem;
   text-transform: capitalize;
 }
 
 .list-full {
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -85,4 +104,5 @@ export default {
   transition: all 0.3s ease;
   border: none;
 }
+
 </style>
