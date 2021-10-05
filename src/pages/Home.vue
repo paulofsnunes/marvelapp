@@ -148,11 +148,12 @@
     }
     .list-container {
     max-width: 300px;
-    height: 500px;
+    height: 350px;
     background: red;
     color: white;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0;
   }
   }
 </style>
