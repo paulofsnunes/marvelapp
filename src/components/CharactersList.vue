@@ -1,7 +1,7 @@
 <template>
   <div class="characters">
     <div>
-      <span>Escolha seus personagens favoritos!</span>
+      <span>Escolha sua equipe!</span>
       <div>
         <div class="search-input__container">
           <input
@@ -18,13 +18,12 @@
           <h3>{{ search }}</h3>
         </div>
         <div v-show="searchEmpty" class="characters-list">
-          <p
+          <div
             v-for="(characters, index) in charactersList"
             :key="characters.id"
             class="characters-list-item"
           >
-            {{ index + 1 + ". " }}
-            {{ characters.name }}
+            <p>{{ index + 1 + ". " }} {{ characters.name }}</p>
             <img
               class="character-image"
               :src="
@@ -46,7 +45,7 @@
             >
               Remover
             </button>
-          </p>
+          </div>
         </div>
         <div class="characters-list">
           <p
@@ -291,7 +290,7 @@
     width: 18em;
   }
     .characters-list-item {
-    display: flex;
+    display: ;
     align-items: center;
     flex-direction: column;
     padding: 2rem;

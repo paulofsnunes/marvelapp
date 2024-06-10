@@ -1,35 +1,39 @@
 <template>
   <div class="favorites-list">
-    <h2>Sua Lista:</h2>
+    <h2>Sua equipe:</h2>
 
     <p v-if="favoriteListLength < maximumList && !saved">
       Adicione até 3 personagens
     </p>
-    <p
-      v-for="characterName in favorites"
-      :key="characterName.id"
-      class="chosen-character"
-    >
-      <img
-        src="../assets/Icons/iconmonstr-check-mark-circle-thin.svg"
-        width="20"
-        alt="check icon"
-      />
-      {{ characterName }}
-    </p>
-    <p v-if="favoriteListLength > 1 && favoriteListLength < maximumList">
-      Você pode adicionar mais {{ maximumList - favoriteListLength }} !
-    </p>
-    <p class="list-full" v-if="favoriteListLength == 3">
-      Equipe completa!
-    </p>
-     <p v-if="favoriteListLength == 3">
-      Você gostaria de
+    <div class="m-1 chosen-character">
+      <p
+        v-for="characterName in favorites"
+        :key="characterName.id"
+      >
+        <img
+          src="../assets/Icons/iconmonstr-check-mark-circle-thin.svg"
+          width="20"
+          alt="check icon"
+        />
+        {{ characterName }}
+      </p>
+    </div>
+    <div>
+      <p v-if="favoriteListLength > 1 && favoriteListLength < maximumList">
+        Você pode adicionar mais {{ maximumList - favoriteListLength }} !
+      </p>
+      <p class="list-full" v-if="favoriteListLength == 3">
+        Equipe completa!
+      </p>
+    </div>
+    <div class="my-equip" v-if="favoriteListLength == 3">
+      <p>
+        Você deseja enviar esta equipe?
+      </p>
       <button class="button-remove" @click="saveFavoriteCharacterList(favorites)">
-        Salvar
+        Enviar
       </button>
-      sua lista?
-    </p>
+    </div>
     <p class="list-full" v-if="favoriteListLength > 3">
       Sua lista está cheia!! <br />A equipe recebe 3 personagens no máximo!
     </p>
@@ -81,8 +85,10 @@ h2 {
 }
 
 .chosen-character {
-  margin-top: 1rem;
   text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .list-full {
@@ -91,7 +97,6 @@ h2 {
 }
 
 .button-remove {
-  margin-top: 2rem;
   padding: 0.4rem;
   width: 40%;
   background: linear-gradient(to left, #e66747, #e95454);
@@ -103,6 +108,18 @@ h2 {
   border-radius: 4px;
   transition: all 0.3s ease;
   border: none;
+}
+
+.m-1 {
+  margin: 0.5rem 0 0.5rem;
+}
+
+.my-equip {
+  margin-top: 1rem;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 </style>
